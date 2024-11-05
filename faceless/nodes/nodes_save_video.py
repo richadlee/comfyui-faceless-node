@@ -66,4 +66,13 @@ class NodesSaveVideo:
             # Just copy the video if not extract frames
             shutil.copy(video_path, output_path)
         video["output_path"] = output_path
-        return ()
+        previews = [
+            {
+                "filename": f"{now}_" + os.path.basename(video_path),
+                "subfolder": "faceless",
+                "type": "output",
+                "format": 'video/h264-mp4',
+                "frame_rate": 30
+            }
+        ]
+        return {"ui": {"gifs": previews}}
